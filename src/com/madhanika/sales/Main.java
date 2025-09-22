@@ -53,7 +53,10 @@ public class Main {
         System.out.println("3. View Total Revenue");
         System.out.println("4. View Top Selling Products");
         System.out.println("5. Filter Sales by Region");
-        System.out.println("6. Exit");
+        System.out.println("6. View All Regions");
+        System.out.println("7. View All Products");
+        System.out.println("8. Clear All Sales");
+        System.out.println("9. Exit");
         System.out.print("Enter your choice: ");
     }
 
