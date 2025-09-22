@@ -96,4 +96,22 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    private static void viewAllSales() {
+        System.out.println("\n=== All Sales ===");
+        var sales = salesManager.getAllSales();
+
+        if (sales.isEmpty()) {
+            System.out.println("No sales found.");
+            return;
+        }
+
+        System.out.println("Total sales: " + salesManager.getTotalSalesCount());
+        System.out.println("----------------------------------------");
+
+        for (int i = 0; i < sales.size(); i++) {
+            Sale sale = sales.get(i);
+            System.out.println((i + 1) + ". " + sale.toString());
+        }
+    }
 }
