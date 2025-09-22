@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.madhanika.sales.Main",
+            "projectName": "sales-track-analyzer_b6bfd6c8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "com.madhanika.sales.Main",
+            "projectName": "sales-track-analyzer"
+        }
+    ]
+}
