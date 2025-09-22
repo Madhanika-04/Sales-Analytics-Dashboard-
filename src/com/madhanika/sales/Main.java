@@ -147,4 +147,28 @@ public class Main {
             rank++;
         }
     }
+
+    private static void filterSalesByRegion() {
+        System.out.println("\n=== Filter Sales by Region ===");
+        System.out.print("Enter region to filter: ");
+        String region = scanner.nextLine();
+
+        var filteredSales = salesManager.getSalesByRegion(region);
+        double regionRevenue = salesManager.getRevenueByRegion(region);
+
+        if (filteredSales.isEmpty()) {
+            System.out.println("No sales found for region: " + region);
+            return;
+        }
+
+        System.out.println("Sales in region: " + region);
+        System.out.println("Number of sales: " + filteredSales.size());
+        System.out.println("Total revenue: $" + String.format("%.2f", regionRevenue));
+        System.out.println("----------------------------------------");
+
+        for (int i = 0; i < filteredSales.size(); i++) {
+            Sale sale = filteredSales.get(i);
+            System.out.println((i + 1) + ". " + sale.toString());
+        }
+    }
 }
