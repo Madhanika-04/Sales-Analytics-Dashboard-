@@ -71,8 +71,14 @@ public class Main {
 
     private static int getChoice() {
         try {
-            return Integer.parseInt(scanner.nextLine());
+            int choice = Integer.parseInt(scanner.nextLine());
+            if (choice < 1 || choice > 9) {
+                System.out.println("Please enter a number between 1 and 9.");
+                return -1;
+            }
+            return choice;
         } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid number.");
             return -1;
         }
     }
