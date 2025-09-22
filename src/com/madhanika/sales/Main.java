@@ -35,6 +35,15 @@ public class Main {
                     filterSalesByRegion();
                     break;
                 case 6:
+                    viewAllRegions();
+                    break;
+                case 7:
+                    viewAllProducts();
+                    break;
+                case 8:
+                    clearAllSales();
+                    break;
+                case 9:
                     System.out.println("Thank you for using Sales Tracker Analyzer!");
                     running = false;
                     break;
@@ -172,6 +181,59 @@ public class Main {
         for (int i = 0; i < filteredSales.size(); i++) {
             Sale sale = filteredSales.get(i);
             System.out.println((i + 1) + ". " + sale.toString());
+        }
+    }
+
+    private static void viewAllRegions() {
+        System.out.println("\n=== All Regions ===");
+        var regions = salesManager.getAllRegions();
+
+        if (regions.isEmpty()) {
+            System.out.println("No regions found.");
+            return;
+        }
+
+        System.out.println("Available regions:");
+        System.out.println("----------------------------------------");
+
+        for (int i = 0; i < regions.size(); i++) {
+            String region = regions.get(i);
+            double regionRevenue = salesManager.getRevenueByRegion(region);
+            int regionSales = salesManager.getSalesByRegion(region).size();
+            System.out.println((i + 1) + ". " + region + " - " + regionSales + " sales, $" + String.format("%.2f", regionRevenue));
+        }
+    }
+
+    private static void viewAllProducts() {
+        System.out.println("\n=== All Products ===");
+        var products = salesManager.getAllProducts();
+
+        if (products.isEmpty()) {
+            System.out.println("No products found.");
+            return;
+        }
+
+        System.out.println("Available products:");
+        System.out.println("----------------------------------------");
+
+        for (int i = 0; i < products.size(); i++) {
+            String product = products.get(i);
+            var productQuantities = salesManager.getTopSellingProducts();
+            int quantity = productQuantities.getOrDefault(product, 0);
+            System.out.println((i + 1) + ". " + product + " - " + quantity + " units sold");
+        }
+    }
+
+    private static void clearAllSales() {
+        System.out.println("\n=== Clear All Sales ===");
+        System.out.print("Are you sure you want to clear all sales? (yes/no): ");
+        String confirmation = scanner.nextLine();
+
+        if (confirmation.equalsIgnoreCase("yes") || confirmation.equalsIgnoreCase("y")) {
+            salesManager.clearAllSales();
+            System.out.println("All sales have been cleared.");
+        } else {
+            System.out.println("Operation cancelled.");
         }
     }
 }
