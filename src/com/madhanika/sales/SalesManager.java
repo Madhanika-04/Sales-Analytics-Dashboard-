@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SalesManager {
-n
+
     private List<Sale> sales;
 
     public SalesManager() {
