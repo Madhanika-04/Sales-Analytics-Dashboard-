@@ -114,4 +114,37 @@ public class Main {
             System.out.println((i + 1) + ". " + sale.toString());
         }
     }
+
+    private static void viewTotalRevenue() {
+        System.out.println("\n=== Total Revenue ===");
+        double totalRevenue = salesManager.getTotalRevenue();
+        int totalSales = salesManager.getTotalSalesCount();
+
+        System.out.println("Total number of sales: " + totalSales);
+        System.out.println("Total revenue: $" + String.format("%.2f", totalRevenue));
+
+        if (totalSales > 0) {
+            double averageRevenue = totalRevenue / totalSales;
+            System.out.println("Average revenue per sale: $" + String.format("%.2f", averageRevenue));
+        }
+    }
+
+    private static void viewTopSellingProducts() {
+        System.out.println("\n=== Top Selling Products ===");
+        var productQuantities = salesManager.getTopSellingProducts();
+
+        if (productQuantities.isEmpty()) {
+            System.out.println("No products found.");
+            return;
+        }
+
+        System.out.println("Product sales quantities:");
+        System.out.println("----------------------------------------");
+
+        int rank = 1;
+        for (var entry : productQuantities.entrySet()) {
+            System.out.println(rank + ". " + entry.getKey() + " - " + entry.getValue() + " units");
+            rank++;
+        }
+    }
 }
