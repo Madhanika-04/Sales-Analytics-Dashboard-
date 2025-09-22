@@ -92,4 +92,43 @@ public class SalesManager {
 
         return productRevenue;
     }
+
+    public void clearAllSales() {
+        sales.clear();
+    }
+
+    public boolean removeSale(Sale sale) {
+        return sales.remove(sale);
+    }
+
+    public Sale findSaleByProduct(String productName) {
+        for (Sale sale : sales) {
+            if (sale.getProductName().equalsIgnoreCase(productName)) {
+                return sale;
+            }
+        }
+        return null;
+    }
+
+    public List<String> getAllRegions() {
+        List<String> regions = new ArrayList<>();
+        for (Sale sale : sales) {
+            String region = sale.getRegion();
+            if (!regions.contains(region)) {
+                regions.add(region);
+            }
+        }
+        return regions;
+    }
+
+    public List<String> getAllProducts() {
+        List<String> products = new ArrayList<>();
+        for (Sale sale : sales) {
+            String product = sale.getProductName();
+            if (!products.contains(product)) {
+                products.add(product);
+            }
+        }
+        return products;
+    }
 }
